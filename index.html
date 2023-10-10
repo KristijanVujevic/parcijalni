@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iTunes Search</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <h1>iTunes Search</h1>
+    <label for="searchTerm">Enter artist name or song:</label>
+    <input
+      type="text"
+      id="searchTerm"
+      placeholder="Enter artist name or song"
+    />
+    <label for="searchEntity"
+      >Enter entity type (e.g., song, album, musicVideo):</label
+    >
+    <input type="text" id="searchEntity" placeholder="Enter entity type" />
+    <button id="searchButton">Search</button>
+
+    <div id="results"></div>
+    <div class="loader" id="loader"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
