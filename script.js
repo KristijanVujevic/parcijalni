@@ -46,6 +46,13 @@ document.addEventListener("DOMContentLoaded", function () {
         row.insertCell().textContent = result.trackName;
         row.insertCell().innerHTML = `<audio controls><source src="${result.previewUrl}" type="audio/mpeg"></audio>`;
         row.insertCell().textContent = result.collectionName;
+
+        const artworkCell = row.insertCell();
+        const img = document.createElement("img");
+        img.src = result.artworkUrl100;
+        img.width = 150;
+        img.height = 150;
+        artworkCell.appendChild(img);
       });
 
       resultsDiv.appendChild(table);
