@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   const searchTermInput = document.getElementById("searchTerm");
-  const searchEntityInput = document.getElementById("searchEntity");
+
   const resultsDiv = document.getElementById("results");
   const searchButton = document.getElementById("searchButton");
   const loader = document.getElementById("loader");
@@ -10,8 +10,8 @@ document.addEventListener("DOMContentLoaded", function () {
     loader.style.display = "block";
 
     const searchTerm = searchTermInput.value;
-    const searchEntity = searchEntityInput.value;
-    const apiUrl = `https://itunes.apple.com/search?term=${searchTerm}&entity=${searchEntity}`;
+
+    const apiUrl = `https://itunes.apple.com/search?term=${searchTerm})`;
 
     fetch(apiUrl)
       .then((response) => response.json())
@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
           displayResults(data);
           // Clear input fields after displaying results
           searchTermInput.value = "";
-          searchEntityInput.value = "";
         }, 1000);
       })
       .catch((error) => {
