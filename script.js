@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
         img.width = 150;
         img.height = 150;
         artworkCell.appendChild(img);
-        row.style.animationDelay = `${0.3 * index}s`;
+        row.style.animationDelay = `${0.1 * index}s`;
         resultsDiv.appendChild(table);
       });
     } else {

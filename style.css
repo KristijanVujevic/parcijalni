@@ -62,13 +62,9 @@ button:hover {
 .slideInRow {
   animation: slideInFromLeft 0.5s ease-in-out;
   animation-fill-mode: both;
+  border-radius: 10px;
 }
 
-/* Add animation delay for each row */
 .slideInRow:nth-child(odd) {
-  animation-delay: 0.3s;
-}
-
-.slideInRow:nth-child(even) {
-  animation-delay: 0.6s;
+  background-color: rgba(100, 100, 194, 0.525);
 }
