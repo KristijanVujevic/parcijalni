@@ -38,9 +38,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (data && data.results && data.results.length > 0) {
       const table = document.createElement("table");
+      table.classList.add("slideInTable");
 
-      data.results.forEach((result) => {
+      data.results.forEach((result, index) => {
         const row = table.insertRow();
+        row.classList.add("slideInRow");
         row.insertCell().textContent = result.artistName;
         row.insertCell().textContent = result.trackName;
         row.insertCell().innerHTML = `<audio controls><source src="${result.previewUrl}" type="audio/mpeg"></audio>`;
@@ -52,9 +54,9 @@ document.addEventListener("DOMContentLoaded", function () {
         img.width = 150;
         img.height = 150;
         artworkCell.appendChild(img);
+        row.style.animationDelay = `${0.3 * index}s`;
+        resultsDiv.appendChild(table);
       });
-
-      resultsDiv.appendChild(table);
     } else {
       resultsDiv.innerHTML = "<p>No results found.</p>";
     }
