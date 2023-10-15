@@ -1,40 +1,40 @@
 document.addEventListener("DOMContentLoaded", function () {
   const searchTermInput = document.getElementById("searchTerm");
-
   const resultsDiv = document.getElementById("results");
-  const searchButton = document.getElementById("searchButton");
   const loader = document.getElementById("loader");
+  const prevButton = document.getElementById("prevButton");
+  const nextButton = document.getElementById("nextButton");
+  let currentPage = 1;
+  let debounceTimer;
 
-  searchButton.addEventListener("click", function () {
-    // Show loader when search starts
+  function fetchData() {
     loader.style.display = "block";
+    const searchTerm = searchTermInput.value.trim(); // Trim spaces from the search term
 
-    const searchTerm = searchTermInput.value;
+    if (searchTerm === "") {
+      loader.style.display = "none";
+      resultsDiv.innerHTML = "<p>Please enter a search term.</p>";
+      return;
+    }
 
-    const apiUrl = `https://itunes.apple.com/search?term=${searchTerm})`;
+    const apiUrl = `https://itunes.apple.com/search?term=${searchTerm}&limit=10&offset=${
+      (currentPage - 1) * 10
+    }`;
 
     fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
-        // Pause for 1 second (1000 milliseconds)
-        setTimeout(() => {
-          // Hide loader after pause
-          loader.style.display = "none";
-          // Handle the API response data here
-          displayResults(data);
-          // Clear input fields after displaying results
-          searchTermInput.value = "";
-        }, 1000);
+        loader.style.display = "none";
+        displayResults(data);
       })
       .catch((error) => {
-        // Hide loader in case of error
         loader.style.display = "none";
         displayError(error);
       });
-  });
+  }
 
   function displayResults(data) {
-    resultsDiv.innerHTML = ""; // Clear previous results
+    resultsDiv.innerHTML = "";
 
     if (data && data.results && data.results.length > 0) {
       const table = document.createElement("table");
@@ -65,4 +65,23 @@ document.addEventListener("DOMContentLoaded", function () {
   function displayError(error) {
     resultsDiv.innerHTML = `<p>Something went wrong: ${error.message}</p>`;
   }
+
+  function debounceSearch() {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(fetchData, 500);
+  }
+
+  searchTermInput.addEventListener("input", debounceSearch);
+
+  prevButton.addEventListener("click", function () {
+    if (currentPage > 1) {
+      currentPage--;
+      fetchData();
+    }
+  });
+
+  nextButton.addEventListener("click", function () {
+    currentPage++;
+    fetchData();
+  });
 });

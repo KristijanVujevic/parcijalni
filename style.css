@@ -68,3 +68,6 @@ button:hover {
 .slideInRow:nth-child(odd) {
   background-color: rgba(100, 100, 194, 0.525);
 }
+img {
+  clip-path: circle(75px);
+}
