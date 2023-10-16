@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function fetchData() {
     loader.style.display = "block";
-    const searchTerm = searchTermInput.value.trim(); // Trim spaces from the search term
+    const searchTerm = searchTermInput.value.trim();
 
     if (searchTerm === "") {
       loader.style.display = "none";

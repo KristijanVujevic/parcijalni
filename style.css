@@ -5,7 +5,7 @@
 }
 body {
   font-family: Arial, sans-serif;
-  background: lightgrey;
+  background: #f8f9fa;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,7 +24,7 @@ button {
   margin-top: 20px;
 }
 button:hover {
-  background-color: red;
+  background-color: yellow;
 }
 .loader {
   border: 4px solid rgba(0, 0, 0, 0.2);
@@ -66,7 +66,10 @@ button:hover {
 }
 
 .slideInRow:nth-child(odd) {
-  background-color: rgba(100, 100, 194, 0.525);
+  background-color: #adb5bd;
+}
+.slideInRow:nth-child(even) {
+  background-color: #dee2e6;
 }
 img {
   clip-path: circle(75px);
