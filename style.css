@@ -67,9 +67,11 @@ button:hover {
 
 .slideInRow:nth-child(odd) {
   background-color: #adb5bd;
+  margin: 10px;
 }
 .slideInRow:nth-child(even) {
   background-color: #dee2e6;
+  margin: 10px;
 }
 img {
   clip-path: circle(75px);
